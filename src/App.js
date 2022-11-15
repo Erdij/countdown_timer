@@ -5,10 +5,13 @@ function App() {
   const [timer, setTimer] = useState(5);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setTimer(timer - 1);
-    }, 1000);
-    return () => clearInterval(interval);
+    if (timer !== 0) {
+      const interval = setInterval(() => {
+        setTimer(timer - 1);
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+    document.title = timer;
   }, [timer]);
 
   return (
@@ -21,7 +24,7 @@ function App() {
           borderRadius: "50%",
           color: "white",
           fontSize: "60px",
-          margin: "10px auto",
+          margin: " auto",
           lineHeight: "250px",
         }}
       >
